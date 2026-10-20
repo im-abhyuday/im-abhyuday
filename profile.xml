@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="profile.xsl"?>
+<profile>
+  <developer>
+    <name>Abhyuday Mishra</name>
+    <title>Backend | GenAI | Data Systems Engineer</title>
+    <education>B.Tech Computer Science &amp; Engineering '25, VIT Bhopal University</education>
+    <status>OPEN FOR OFF-CAMPUS SDE &amp; GENAI ROLES</status>
+    <bio>Final-year CSE student building systems that survive production: database-enforced row level security, crash-proof event pipelines, and verifiable RAG evaluation.</bio>
+  </developer>
+
+  <featuredProject>
+    <name>Vaultly — Multi-Tenant RAG Platform</name>
+    <badge>Production-Style RAG</badge>
+    <description>A secure, multi-tenant Retrieval-Augmented Generation platform engineered with database-level isolation, transactional outbox streaming, and rigorous evaluation.</description>
+    <features>
+      <feature>
+        <area>Tenant Isolation</area>
+        <details>Forced PostgreSQL Row-Level Security, least-privilege DB role, composite foreign keys preventing cross-tenant data leakage.</details>
+      </feature>
+      <feature>
+        <area>Authentication</area>
+        <details>JWT access tokens, rotating refresh tokens with reuse detection, role-based access control (RBAC).</details>
+      </feature>
+      <feature>
+        <area>Event Pipeline</area>
+        <details>Kafka / Redpanda pipeline with transactional outbox pattern, idempotent consumers, dead-letter queues.</details>
+      </feature>
+      <feature>
+        <area>Hybrid Retrieval</area>
+        <details>Hybrid search (pgvector HNSW + full-text RRF) with reranking, permission-aware at query time.</details>
+      </feature>
+      <feature>
+        <area>Evaluation</area>
+        <details>recall@k, MRR, faithfulness scoring, and config-by-config ablation testing.</details>
+      </feature>
+    </features>
+  </featuredProject>
+
+  <skills>
+    <skill>
+      <name>Python</name>
+      <category>Languages</category>
+      <level>Advanced</level>
+    </skill>
+    <skill>
+      <name>FastAPI</name>
+      <category>Backend</category>
+      <level>Advanced</level>
+    </skill>
+    <skill>
+      <name>PostgreSQL &amp; RLS</name>
+      <category>Databases</category>
+      <level>Advanced</level>
+    </skill>
+    <skill>
+      <name>pgvector</name>
+      <category>Vector Search</category>
+      <level>Proficient</level>
+    </skill>
+    <skill>
+      <name>Apache Kafka / Redpanda</name>
+      <category>Messaging</category>
+      <level>Proficient</level>
+    </skill>
+    <skill>
+      <name>Redis Semantic Cache</name>
+      <category>Caching</category>
+      <level>Proficient</level>
+    </skill>
+    <skill>
+      <name>RAG &amp; LLM Embeddings</name>
+      <category>GenAI</category>
+      <level>Proficient</level>
+    </skill>
+    <skill>
+      <name>Docker &amp; Compose</name>
+      <category>DevOps</category>
+      <level>Proficient</level>
+    </skill>
+    <skill>
+      <name>SQLAlchemy (Async)</name>
+      <category>Backend</category>
+      <level>Proficient</level>
+    </skill>
+    <skill>
+      <name>TypeScript &amp; React</name>
+      <category>Frontend</category>
+      <level>Intermediate</level>
+    </skill>
+    <skill>
+      <name>XGBoost &amp; SHAP</name>
+      <category>Machine Learning</category>
+      <level>Intermediate</level>
+    </skill>
+    <skill>
+      <name>GitHub Actions CI/CD</name>
+      <category>DevOps</category>
+      <level>Proficient</level>
+    </skill>
+  </skills>
+
+  <telemetry>
+    <metric name="Python/FastAPI" score="96" />
+    <metric name="PostgreSQL/RLS" score="94" />
+    <metric name="Kafka/Streams" score="90" />
+  </telemetry>
+</profile>

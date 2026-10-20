@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abhyuday Mishra — Systems &amp; GenAI Architecture</title>
+  <meta name="description" content="Interactive systems telemetry and architecture portfolio for Abhyuday Mishra — Backend &amp; GenAI Systems Engineer." />
+  <meta name="theme-color" content="#090d16" />
+  <meta property="og:title" content="Abhyuday Mishra — Systems &amp; GenAI Architecture" />
+  <meta property="og:description" content="Interactive systems telemetry and architecture portfolio for Abhyuday Mishra." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-base: #070a12;
+      --bg-surface: #0d1424;
+      --bg-card: rgba(13, 20, 36, 0.85);
+      --border-subtle: #1e293b;
+      --border-glow: rgba(56, 189, 248, 0.4);
+      --accent-cyan: #38bdf8;
+      --accent-blue: #2563eb;
+      --accent-purple: #a855f7;
+      --accent-green: #10b981;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      background-image: 
+        radial-gradient(at 50% 0%, rgba(37, 99, 235, 0.18) 0px, transparent 65%),
+        radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.12) 0px, transparent 55%),
+        radial-gradient(at 0% 100%, rgba(16, 185, 129, 0.08) 0px, transparent 55%);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px 60px;
+      line-height: 1.5;
+    }
+
+    .main-wrapper {
+      width: 100%;
+      max-width: 920px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* Top Nav */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-card);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 14px 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #2563eb, #38bdf8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fira Code', monospace;
+      font-weight: 700;
+      font-size: 16px;
+      color: white;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
+    }
+
+    .nav-title h1 {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+
+    .nav-title p {
+      font-size: 11.5px;
+      color: var(--accent-cyan);
+      font-family: 'Fira Code', monospace;
+    }
+
+    .live-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 20px;
+      font-family: 'Fira Code', monospace;
+      font-size: 11px;
+      color: #34d399;
+    }
+
+    .status-orb {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulseOrb 2s infinite;
+    }
+
+    @keyframes pulseOrb {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(0.85); }
+    }
+
+    /* SVG Component Showcase */
+    .interactive-card-frame {
+      width: 100%;
+      background: transparent;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s ease;
+    }
+
+    .interactive-card-frame object,
+    .interactive-card-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Info Strip */
+    .telemetry-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-family: 'Fira Code', monospace;
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    .telemetry-strip a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .telemetry-strip a:hover {
+      text-decoration: underline;
+    }
+
+    .pill-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    .pill-chip {
+      padding: 3px 8px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 6px;
+      color: var(--accent-cyan);
+    }
+  </style>
+</head>
+<body>
+  <div class="main-wrapper">
+    <!-- Top Navigation Header -->
+    <header class="top-nav" id="mainHeader">
+      <div class="nav-brand">
+        <div class="brand-avatar">A</div>
+        <div class="nav-title">
+          <h1>Abhyuday Mishra</h1>
+          <p>Backend &amp; GenAI Systems Engineer</p>
+        </div>
+      </div>
+      <div class="live-status">
+        <div class="status-orb"></div>
+        <span>OPEN FOR ROLES</span>
+      </div>
+    </header>
+
+    <!-- Embedded XML SVG Component -->
+    <main class="interactive-card-frame" id="interactiveHudWrapper">
+      <object id="interactiveSvgHud" type="image/svg+xml" data="assets/interactive-card.svg" width="100%">
+        <!-- Fallback if object is not supported -->
+        <img src="assets/interactive-card.svg" alt="Abhyuday Mishra - Interactive Systems Architecture HUD" width="100%" />
+      </object>
+    </main>
+
+    <!-- Bottom Telemetry Strip -->
+    <footer class="telemetry-strip" id="telemetryFooter">
+      <div class="pill-group">
+        <span class="pill-chip">XML 1.0 (SVG)</span>
+        <span class="pill-chip">SMIL Motion</span>
+        <span class="pill-chip">Hardware Accelerated</span>
+      </div>
+      <div>
+        <span>GitHub: <a href="https://github.com/im-abhyuday" target="_blank" rel="noopener">@im-abhyuday</a></span>
+        <span style="margin: 0 8px;">•</span>
+        <span>Featured: <a href="https://github.com/im-abhyuday/Vaultly" target="_blank" rel="noopener">Vaultly RAG</a></span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

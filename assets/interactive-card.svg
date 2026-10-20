@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 480" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d" />
+      <stop offset="50%" stop-color="#0d1424" />
+      <stop offset="100%" stop-color="#070a12" />
+    </linearGradient>
+
+    <radialGradient id="top-glow" cx="50%" cy="0%" r="65%">
+      <stop offset="0%" stop-color="#1d3b6f" stop-opacity="0.45" />
+      <stop offset="60%" stop-color="#0f1b33" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#0a0f1d" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Border Gradients -->
+    <linearGradient id="outer-border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.7" />
+      <stop offset="35%" stop-color="#818cf8" stop-opacity="0.35" />
+      <stop offset="70%" stop-color="#c084fc" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.25" />
+    </linearGradient>
+
+    <linearGradient id="cyan-blue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+
+    <linearGradient id="purple-pink" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c084fc" />
+      <stop offset="100%" stop-color="#9333ea" />
+    </linearGradient>
+
+    <linearGradient id="emerald-teal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+
+    <!-- Filters & Glows -->
+    <filter id="glow-cyan" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="glow-purple" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="glow-green" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="2.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="card-shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+
+    <!-- Background Pattern -->
+    <pattern id="cyber-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="0.9" fill="#38bdf8" fill-opacity="0.12" />
+    </pattern>
+  </defs>
+
+  <style><![CDATA[
+    /* Global Typography and Styles */
+    text {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      user-select: none;
+    }
+    .mono {
+      font-family: 'Fira Code', 'SF Mono', Consolas, Monaco, monospace;
+    }
+
+    /* Keyframe Animations */
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.95; }
+      50% { opacity: 0.45; }
+    }
+
+    @keyframes radarWave {
+      0% { r: 3.5px; opacity: 0.9; stroke-width: 1.5px; }
+      100% { r: 13px; opacity: 0; stroke-width: 0.5px; }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    @keyframes dashMove {
+      from { stroke-dashoffset: 40; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes ringSpin {
+      from { stroke-dashoffset: 0; }
+      to { stroke-dashoffset: 60; }
+    }
+
+    /* Animation Classes */
+    .radar-circle {
+      animation: radarWave 2.2s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+      transform-origin: 712px 27px;
+    }
+    .radar-circle-delay {
+      animation: radarWave 2.2s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+      animation-delay: 1.1s;
+      transform-origin: 712px 27px;
+    }
+    .cursor-blink {
+      animation: blink 0.9s infinite;
+    }
+    .stream-pipe {
+      stroke-dasharray: 6 4;
+      animation: dashMove 1.2s linear infinite;
+    }
+    .stream-pipe-purple {
+      stroke-dasharray: 6 4;
+      animation: dashMove 1.6s linear infinite;
+    }
+    .spinning-avatar-ring {
+      stroke-dasharray: 6 4;
+      animation: ringSpin 6s linear infinite;
+      transform-origin: 28px 28px;
+    }
+
+    /* Interactive Hover Effects */
+    .interactive-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .interactive-card:hover {
+      filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.28));
+    }
+
+    .node-box {
+      transition: transform 0.22s ease, stroke 0.22s ease, filter 0.22s ease;
+      cursor: pointer;
+    }
+    .node-box:hover {
+      filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.65));
+    }
+    .node-box:hover rect {
+      stroke: #38bdf8;
+      stroke-width: 1.8px;
+      fill-opacity: 0.95;
+    }
+
+    .node-box-purple:hover {
+      filter: drop-shadow(0 0 10px rgba(192, 132, 252, 0.65));
+    }
+    .node-box-purple:hover rect {
+      stroke: #c084fc;
+      stroke-width: 1.8px;
+    }
+
+    .node-box-green:hover {
+      filter: drop-shadow(0 0 10px rgba(52, 211, 153, 0.65));
+    }
+    .node-box-green:hover rect {
+      stroke: #34d399;
+      stroke-width: 1.8px;
+    }
+
+    .badge-chip {
+      transition: transform 0.2s ease, fill 0.2s ease;
+      cursor: pointer;
+    }
+    .badge-chip:hover rect {
+      fill: #1e293b;
+      stroke: #38bdf8;
+      stroke-width: 1.2px;
+    }
+    .badge-chip:hover text {
+      fill: #ffffff;
+    }
+
+    .action-btn {
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+    .action-btn:hover {
+      transform: translateY(-2px);
+    }
+    .action-btn:hover rect {
+      stroke-width: 1.5px;
+      filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.45));
+    }
+  ]]></style>
+
+  <!-- Outer HUD Container -->
+  <g class="interactive-card">
+    <!-- Main Card Body -->
+    <rect x="2" y="2" width="856" height="476" rx="16" fill="url(#bg-grad)" stroke="url(#outer-border)" stroke-width="1.4" filter="url(#card-shadow)" />
+    
+    <!-- Top Spotlight & Grid Overlay -->
+    <rect x="2" y="2" width="856" height="476" rx="16" fill="url(#top-glow)" />
+    <rect x="2" y="2" width="856" height="476" rx="16" fill="url(#cyber-grid)" />
+
+    <!-- ==================== HEADER BAR ==================== -->
+    <g id="header-bar">
+      <!-- Window Controls -->
+      <circle cx="28" cy="27" r="5.5" fill="#ef4444" fill-opacity="0.85" />
+      <circle cx="46" cy="27" r="5.5" fill="#f59e0b" fill-opacity="0.85" />
+      <circle cx="64" cy="27" r="5.5" fill="#10b981" fill-opacity="0.85" />
+
+      <!-- Terminal Path / Title Breadcrumb -->
+      <g transform="translate(90, 18)">
+        <rect x="0" y="0" width="284" height="19" rx="4" fill="#0f172a" fill-opacity="0.75" stroke="#1e293b" stroke-width="0.8" />
+        <text x="8" y="13.5" class="mono" font-size="11" fill="#94a3b8">
+          <tspan fill="#38bdf8">abhyuday</tspan><tspan fill="#64748b">@</tspan><tspan fill="#a855f7">sys-mesh</tspan><tspan fill="#64748b">:</tspan><tspan fill="#e2e8f0">~/vaultly/core-engine</tspan>
+        </text>
+      </g>
+
+      <!-- Live Status Badge with Radar Beacon -->
+      <g transform="translate(635, 14)">
+        <rect x="0" y="0" width="206" height="26" rx="13" fill="#064e3b" fill-opacity="0.3" stroke="#059669" stroke-width="1" />
+        
+        <!-- Animated Radar Waves -->
+        <circle cx="16" cy="13" r="5" stroke="#10b981" fill="none" class="radar-circle" />
+        <circle cx="16" cy="13" r="5" stroke="#34d399" fill="none" class="radar-circle-delay" />
+        <circle cx="16" cy="13" r="4" fill="#10b981" filter="url(#glow-green)" />
+        
+        <text x="30" y="17" class="mono" font-size="10.5" font-weight="600" fill="#34d399" letter-spacing="0.5">
+          LIVE TELEMETRY • ACTIVE
+        </text>
+      </g>
+    </g>
+
+    <!-- Header Divider Line -->
+    <line x1="2" y1="52" x2="858" y2="52" stroke="#1e293b" stroke-width="1" />
+
+    <!-- ==================== LEFT COLUMN: DEVELOPER IDENTITY & TELEMETRY ==================== -->
+    <g id="left-column" transform="translate(20, 66)">
+      
+      <!-- Panel 1: Profile & Identity HUD -->
+      <g id="profile-hud">
+        <rect x="0" y="0" width="375" height="122" rx="12" fill="#0d1424" fill-opacity="0.85" stroke="#1e293b" stroke-width="1" />
+        
+        <!-- Cyber Avatar Ring & Monogram -->
+        <g transform="translate(16, 16)">
+          <circle cx="28" cy="28" r="28" fill="#111c33" stroke="#2563eb" stroke-width="1.6" class="spinning-avatar-ring" />
+          <circle cx="28" cy="28" r="22" fill="#0a0f1d" stroke="#38bdf8" stroke-width="1.2" />
+          <text x="28" y="36" class="mono" font-size="20" font-weight="700" fill="#38bdf8" text-anchor="middle">A</text>
+          <!-- Hex pulse accent -->
+          <circle cx="48" cy="10" r="3.5" fill="#10b981" filter="url(#glow-green)" />
+        </g>
+
+        <!-- Identity Information -->
+        <g transform="translate(86, 18)">
+          <text x="0" y="16" font-size="18" font-weight="700" fill="#f8fafc" letter-spacing="-0.3">Abhyuday Mishra</text>
+          <text x="0" y="34" class="mono" font-size="11.5" font-weight="500" fill="#38bdf8">Backend &amp; GenAI Systems Engineer</text>
+          <text x="0" y="50" font-size="10.5" fill="#94a3b8">B.Tech CSE '25 • VIT Bhopal University</text>
+        </g>
+
+        <!-- Tech Chips Under Profile -->
+        <g transform="translate(16, 80)">
+          <g class="badge-chip">
+            <rect x="0" y="0" width="105" height="24" rx="6" fill="#162238" stroke="#2563eb" stroke-opacity="0.5" stroke-width="1" />
+            <text x="52" y="15.5" class="mono" font-size="10" fill="#93c5fd" text-anchor="middle">⚡ FastAPI+Kafka</text>
+          </g>
+          <g class="badge-chip" transform="translate(112, 0)">
+            <rect x="0" y="0" width="108" height="24" rx="6" fill="#162238" stroke="#10b981" stroke-opacity="0.5" stroke-width="1" />
+            <text x="54" y="15.5" class="mono" font-size="10" fill="#6ee7b7" text-anchor="middle">🔐 Postgres RLS</text>
+          </g>
+          <g class="badge-chip" transform="translate(227, 0)">
+            <rect x="0" y="0" width="116" height="24" rx="6" fill="#162238" stroke="#a855f7" stroke-opacity="0.5" stroke-width="1" />
+            <text x="58" y="15.5" class="mono" font-size="10" fill="#d8b4fe" text-anchor="middle">🧠 RAG Evaluation</text>
+          </g>
+        </g>
+      </g>
+
+      <!-- Panel 2: System Capabilities & Performance Gauges -->
+      <g id="telemetry-hud" transform="translate(0, 134)">
+        <rect x="0" y="0" width="375" height="152" rx="12" fill="#0d1424" fill-opacity="0.85" stroke="#1e293b" stroke-width="1" />
+        
+        <g transform="translate(16, 16)">
+          <!-- Panel Header -->
+          <circle cx="4" cy="5" r="3" fill="#38bdf8" />
+          <text x="14" y="9" class="mono" font-size="11" font-weight="600" fill="#e2e8f0" letter-spacing="0.5">CORE BENCHMARKS &amp; READINESS</text>
+          <text x="340" y="9" class="mono" font-size="10" fill="#64748b" text-anchor="end">SYS/LOAD: OPTIMAL</text>
+
+          <!-- Gauge 1: Python & Backend Systems -->
+          <g transform="translate(0, 22)">
+            <text x="0" y="11" class="mono" font-size="10.5" fill="#94a3b8">Python / Async FastAPI / APIs</text>
+            <text x="340" y="11" class="mono" font-size="10.5" font-weight="600" fill="#38bdf8" text-anchor="end">96%</text>
+            <!-- Progress track -->
+            <rect x="0" y="17" width="340" height="7" rx="3.5" fill="#1e293b" />
+            <rect x="0" y="17" width="326" height="7" rx="3.5" fill="url(#cyan-blue)" />
+          </g>
+
+          <!-- Gauge 2: Tenant Isolation & DB Security -->
+          <g transform="translate(0, 52)">
+            <text x="0" y="11" class="mono" font-size="10.5" fill="#94a3b8">PostgreSQL Forced RLS / pgvector</text>
+            <text x="340" y="11" class="mono" font-size="10.5" font-weight="600" fill="#34d399" text-anchor="end">94%</text>
+            <!-- Progress track -->
+            <rect x="0" y="17" width="340" height="7" rx="3.5" fill="#1e293b" />
+            <rect x="0" y="17" width="320" height="7" rx="3.5" fill="url(#emerald-teal)" />
+          </g>
+
+          <!-- Gauge 3: Event Pipelines & MLOps -->
+          <g transform="translate(0, 82)">
+            <text x="0" y="11" class="mono" font-size="10.5" fill="#94a3b8">Event Streams (Kafka) &amp; Hybrid RAG</text>
+            <text x="340" y="11" class="mono" font-size="10.5" font-weight="600" fill="#c084fc" text-anchor="end">90%</text>
+            <!-- Progress track -->
+            <rect x="0" y="17" width="340" height="7" rx="3.5" fill="#1e293b" />
+            <rect x="0" y="17" width="306" height="7" rx="3.5" fill="url(#purple-pink)" />
+          </g>
+        </g>
+      </g>
+
+      <!-- Panel 3: Interactive Quick Actions / Links -->
+      <g id="action-hud" transform="translate(0, 298)">
+        <rect x="0" y="0" width="375" height="96" rx="12" fill="#0d1424" fill-opacity="0.85" stroke="#1e293b" stroke-width="1" />
+        
+        <g transform="translate(16, 14)">
+          <text x="0" y="10" class="mono" font-size="11" font-weight="600" fill="#e2e8f0" letter-spacing="0.5">DISPATCH CHANNELS</text>
+          
+          <g transform="translate(0, 22)">
+            <!-- Action 1: LinkedIn -->
+            <a href="https://www.linkedin.com/in/abhyudayyy/" target="_blank">
+              <g class="action-btn">
+                <rect x="0" y="0" width="106" height="34" rx="8" fill="#111c33" stroke="#2563eb" stroke-width="1" />
+                <text x="53" y="21" class="mono" font-size="11" font-weight="600" fill="#60a5fa" text-anchor="middle">💼 LinkedIn</text>
+              </g>
+            </a>
+
+            <!-- Action 2: Email -->
+            <a href="mailto:abhyudaymishra2004@gmail.com">
+              <g class="action-btn" transform="translate(116, 0)">
+                <rect x="0" y="0" width="106" height="34" rx="8" fill="#1a1c29" stroke="#ea4335" stroke-opacity="0.7" stroke-width="1" />
+                <text x="53" y="21" class="mono" font-size="11" font-weight="600" fill="#f87171" text-anchor="middle">✉️ Mail Say Hi</text>
+              </g>
+            </a>
+
+            <!-- Action 3: Vaultly Repo -->
+            <a href="https://github.com/im-abhyuday/Vaultly" target="_blank">
+              <g class="action-btn" transform="translate(232, 0)">
+                <rect x="0" y="0" width="110" height="34" rx="8" fill="#19152b" stroke="#a855f7" stroke-width="1" />
+                <text x="55" y="21" class="mono" font-size="11" font-weight="600" fill="#c084fc" text-anchor="middle">🚀 Vaultly Code</text>
+              </g>
+            </a>
+          </g>
+
+          <text x="0" y="74" class="mono" font-size="9.5" fill="#64748b">🎯 Open to Off-Campus SDE / Backend / GenAI roles</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- ==================== RIGHT COLUMN: VAULTLY EVENT-DRIVEN PIPELINE SIMULATION ==================== -->
+    <g id="right-column" transform="translate(415, 66)">
+      <!-- Panel Container -->
+      <rect x="0" y="0" width="425" height="394" rx="12" fill="#0d1424" fill-opacity="0.85" stroke="#1e293b" stroke-width="1" />
+      
+      <!-- Panel Header -->
+      <g transform="translate(16, 16)">
+        <text x="0" y="12" class="mono" font-size="12" font-weight="700" fill="#38bdf8" letter-spacing="0.5">⚡ VAULTLY ARCHITECTURE PIPELINE</text>
+        <text x="0" y="27" font-size="10.5" fill="#94a3b8">Interactive simulation of multi-tenant RAG event loop &amp; RLS</text>
+      </g>
+
+      <!-- Architecture Pipeline Diagram Area -->
+      <g id="pipeline-nodes" transform="translate(16, 44)">
+        
+        <!-- Pipeline Connector Paths with Flowing Dashes -->
+        <!-- Path 1: Client -> FastAPI Gate -->
+        <path d="M 82 34 L 118 34" stroke="#2563eb" stroke-width="2" fill="none" class="stream-pipe" />
+        
+        <!-- Path 2: FastAPI -> Postgres RLS (Direct RLS query) -->
+        <path d="M 230 34 L 268 34" stroke="#059669" stroke-width="2" fill="none" class="stream-pipe" />
+
+        <!-- Path 3: FastAPI -> Kafka Outbox (Async ingestion) -->
+        <path d="M 174 58 L 174 88" stroke="#7c3aed" stroke-width="2" fill="none" class="stream-pipe-purple" />
+
+        <!-- Path 4: Kafka Outbox -> Worker Embedder -->
+        <path d="M 230 112 L 268 112" stroke="#7c3aed" stroke-width="2" fill="none" class="stream-pipe-purple" />
+
+        <!-- Path 5: Worker Embedder -> Postgres Upstream -->
+        <path d="M 330 88 L 330 62" stroke="#059669" stroke-width="2" fill="none" class="stream-pipe" />
+
+        <!-- ANIMATED DATA PACKETS (Traveling Glowing Orbs) -->
+        <!-- Packet A: Query Packet (Client -> API -> DB) -->
+        <circle r="4" fill="#38bdf8" filter="url(#glow-cyan)">
+          <animateMotion path="M 10 34 L 118 34 L 230 34 L 330 34" dur="2.4s" repeatCount="indefinite" />
+        </circle>
+
+        <!-- Packet B: Outbox Event Packet (API -> Kafka -> Worker -> Vector DB) -->
+        <circle r="4" fill="#c084fc" filter="url(#glow-purple)">
+          <animateMotion path="M 174 34 L 174 112 L 268 112 L 330 112 L 330 60" dur="3.4s" repeatCount="indefinite" />
+        </circle>
+
+        <!-- Node 1: Client & JWT -->
+        <g class="node-box" transform="translate(0, 10)">
+          <title>Client: Authenticated with tenant-scoped JWT bearer</title>
+          <rect x="0" y="0" width="82" height="48" rx="8" fill="#131c31" stroke="#2563eb" stroke-width="1.2" />
+          <text x="41" y="21" class="mono" font-size="10" font-weight="700" fill="#e2e8f0" text-anchor="middle">CLIENT</text>
+          <text x="41" y="36" class="mono" font-size="8.5" fill="#93c5fd" text-anchor="middle">JWT Bearer</text>
+        </g>
+
+        <!-- Node 2: FastAPI & Tenant Context -->
+        <g class="node-box" transform="translate(118, 10)">
+          <title>FastAPI Gateway: Injects tenant context &amp; enforces RLS session</title>
+          <rect x="0" y="0" width="112" height="48" rx="8" fill="#131c31" stroke="#38bdf8" stroke-width="1.2" />
+          <text x="56" y="21" class="mono" font-size="10" font-weight="700" fill="#38bdf8" text-anchor="middle">FASTAPI GATE</text>
+          <text x="56" y="36" class="mono" font-size="8.5" fill="#67e8f9" text-anchor="middle">Tenant RLS Scope</text>
+        </g>
+
+        <!-- Node 3: Kafka / Outbox Relay -->
+        <g class="node-box node-box-purple" transform="translate(118, 88)">
+          <title>Kafka / Redpanda: Transactional outbox event streaming with DLQs</title>
+          <rect x="0" y="0" width="112" height="48" rx="8" fill="#1b1433" stroke="#a855f7" stroke-width="1.2" />
+          <text x="56" y="21" class="mono" font-size="10" font-weight="700" fill="#d8b4fe" text-anchor="middle">KAFKA OUTBOX</text>
+          <text x="56" y="36" class="mono" font-size="8.5" fill="#c084fc" text-anchor="middle">Idempotent Relay</text>
+        </g>
+
+        <!-- Node 4: Worker Embedder & Reranker -->
+        <g class="node-box node-box-purple" transform="translate(268, 88)">
+          <title>Worker Pool: Parses documents, generates embeddings &amp; evals</title>
+          <rect x="0" y="0" width="124" height="48" rx="8" fill="#1b1433" stroke="#a855f7" stroke-width="1.2" />
+          <text x="62" y="21" class="mono" font-size="10" font-weight="700" fill="#d8b4fe" text-anchor="middle">WORKER EMBED</text>
+          <text x="62" y="36" class="mono" font-size="8.5" fill="#c084fc" text-anchor="middle">Chunks + Vectors</text>
+        </g>
+
+        <!-- Node 5: Database Vault (Postgres + pgvector) -->
+        <g class="node-box node-box-green" transform="translate(268, 8)">
+          <title>PostgreSQL + pgvector: Hardened with forced RLS and HNSW indexing</title>
+          <rect x="0" y="0" width="124" height="52" rx="8" fill="#092019" stroke="#10b981" stroke-width="1.2" />
+          
+          <text x="62" y="21" class="mono" font-size="10" font-weight="700" fill="#34d399" text-anchor="middle">POSTGRES + RLS</text>
+          <text x="62" y="36" class="mono" font-size="8.5" fill="#6ee7b7" text-anchor="middle">pgvector • Zero-Leak</text>
+          
+          <!-- Mini security indicator -->
+          <circle cx="16" cy="18" r="3" fill="#10b981" filter="url(#glow-green)" />
+        </g>
+      </g>
+
+      <!-- Real-Time Terminal Telemetry Log (Simulated Live Engine) -->
+      <g id="terminal-stream" transform="translate(16, 204)">
+        <!-- Terminal Body -->
+        <rect x="0" y="0" width="393" height="174" rx="8" fill="#070a12" stroke="#1e293b" stroke-width="1" />
+        
+        <!-- Terminal Top Header -->
+        <rect x="0" y="0" width="393" height="22" rx="8" fill="#0f172a" />
+        <rect x="0" y="14" width="393" height="8" fill="#0f172a" />
+        <circle cx="12" cy="11" r="3" fill="#ef4444" />
+        <circle cx="22" cy="11" r="3" fill="#f59e0b" />
+        <circle cx="32" cy="11" r="3" fill="#10b981" />
+        <text x="46" y="14.5" class="mono" font-size="9" fill="#94a3b8">vaultly-daemon.log — stream: stdout</text>
+
+        <!-- Log Lines -->
+        <g transform="translate(12, 40)">
+          <!-- Line 1 -->
+          <text x="0" y="0" class="mono" font-size="9.5" fill="#64748b">
+            <tspan fill="#38bdf8">00:00:01</tspan> <tspan fill="#34d399">[AUTH]</tspan> <tspan fill="#cbd5e1">JWT validated • tenant_id="t_982b"</tspan>
+          </text>
+
+          <!-- Line 2 -->
+          <text x="0" y="20" class="mono" font-size="9.5" fill="#64748b">
+            <tspan fill="#38bdf8">00:00:02</tspan> <tspan fill="#a855f7">[KAFKA]</tspan> <tspan fill="#cbd5e1">outbox_relay: chunk payload committed</tspan>
+          </text>
+
+          <!-- Line 3 -->
+          <text x="0" y="40" class="mono" font-size="9.5" fill="#64748b">
+            <tspan fill="#38bdf8">00:00:03</tspan> <tspan fill="#10b981">[RLS]</tspan> <tspan fill="#a7f3d0">set_config(tenant) • cross-tenant: 0 rows</tspan>
+          </text>
+
+          <!-- Line 4 -->
+          <text x="0" y="60" class="mono" font-size="9.5" fill="#64748b">
+            <tspan fill="#38bdf8">00:00:04</tspan> <tspan fill="#f59e0b">[VEC]</tspan> <tspan fill="#cbd5e1">hybrid_rrf: top_k=5 recall@10=0.96</tspan>
+          </text>
+
+          <!-- Line 5 -->
+          <text x="0" y="80" class="mono" font-size="9.5" fill="#64748b">
+            <tspan fill="#38bdf8">00:00:05</tspan> <tspan fill="#38bdf8">[EVAL]</tspan> <tspan fill="#93c5fd">faithfulness=0.98 • latency=142ms</tspan>
+          </text>
+
+          <!-- Line 6 (Interactive Prompt with Blinking Cursor) -->
+          <text x="0" y="104" class="mono" font-size="10" font-weight="600" fill="#34d399">
+            <tspan fill="#38bdf8">&gt;</tspan> ready for production &amp; off-campus roles<tspan class="cursor-blink" fill="#38bdf8">_</tspan>
+          </text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

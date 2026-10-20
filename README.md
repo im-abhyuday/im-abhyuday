@@ -27,6 +27,13 @@
 <a href="#lets-connect">Contact</a>
 </b>
 
+<br/><br/>
+
+<!-- Interactive XML / SVG Architecture HUD -->
+<a href="https://github.com/im-abhyuday/Vaultly">
+  <img src="./assets/interactive-card.svg" alt="Abhyuday Mishra - Interactive Architecture &amp; Telemetry HUD" width="100%" />
+</a>
+
 </div>
 
 ---

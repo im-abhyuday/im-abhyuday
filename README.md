@@ -172,8 +172,6 @@ flowchart LR
 <div align="center">
   <img height="170" alt="GitHub stats" src="https://github-readme-stats.vercel.app/api?username=im-abhyuday&show_icons=true&theme=tokyonight&hide_border=true" />
   <img height="170" alt="Top languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=im-abhyuday&layout=compact&theme=tokyonight&hide_border=true" />
-  <br/>
-  <img alt="Streak stats" src="https://streak-stats.demolab.com?user=im-abhyuday&theme=tokyonight&hide_border=true" />
 </div>
 
 <details>
@@ -186,10 +184,13 @@ flowchart LR
 
 </details>
 
+<br/>
+
 <div align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/im-abhyuday/im-abhyuday/output/github-snake-dark.svg" />
-    <img alt="Contribution snake" src="https://raw.githubusercontent.com/im-abhyuday/im-abhyuday/output/github-snake.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/im-abhyuday/im-abhyuday/output/github-snake.svg" />
+    <img alt="GitHub Contribution Snake" src="https://raw.githubusercontent.com/im-abhyuday/im-abhyuday/output/github-snake-dark.svg" width="100%" />
   </picture>
 </div>
 
